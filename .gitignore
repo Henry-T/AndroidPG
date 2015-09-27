@@ -1,3 +1,8 @@
 appcompat_v7/bin/*
 AnyShootCtrl/bin/*
 Misc/Cube/bin/*
+.metadata
+/.metadata
+bin
+gen
+.settings
