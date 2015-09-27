@@ -1,0 +1,83 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.lolofinil.android.framework.waytostartactivity.MainActivity" >
+
+    <TextView
+        android:id="@+id/tvURLTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="URL" />
+    
+    <TextView
+        android:id="@+id/tvURL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="WayToStartActivity" />
+
+    <EditText
+        android:id="@+id/etURL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvURL"
+        android:layout_marginLeft="19dp"
+        android:layout_toRightOf="@+id/tvActionTitle"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/btnStartWithUrl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvURLTitle"
+        android:layout_below="@+id/etURL"
+        android:text="StartWithURL" />
+
+    <TextView
+        android:id="@+id/tvActionTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnStartWithUrl"
+        android:layout_below="@+id/btnStartWithUrl"
+        android:layout_marginTop="28dp"
+        android:text="Action" />
+
+    <EditText
+        android:id="@+id/etAction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvActionTitle"
+        android:layout_alignBottom="@+id/tvActionTitle"
+        android:layout_alignLeft="@+id/etURL"
+        android:ems="10" />
+
+    <Button
+        android:id="@+id/btnStartWithAction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvActionTitle"
+        android:layout_below="@+id/etAction"
+        android:layout_marginTop="20dp"
+        android:text="StartWithAction" />
+
+    <Button
+        android:id="@+id/btnYunOSHYSG"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnStartWithAction"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="27dp"
+        android:text="云OS->花样三国" />
+
+
+</RelativeLayout>
