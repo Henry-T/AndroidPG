@@ -1,0 +1,5 @@
+
+-dontshrink
+
+
+#-keep public class com.lolofinil.Build.GradleLibraryHelloWorld.TestClass{}

@@ -1,0 +1,3 @@
+include ':GradleLibraryHelloWorld'
+include ':GradleLibraryPrebuild'
+include ':GradleLibraryRefed'
