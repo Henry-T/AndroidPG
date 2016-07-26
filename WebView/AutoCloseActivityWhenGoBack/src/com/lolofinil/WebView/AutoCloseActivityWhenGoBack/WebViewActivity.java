@@ -56,6 +56,7 @@ public class WebViewActivity extends Activity {
                 }
             }, "androidInterface");
         }
+        // html content mode won't have history, so I put it in local html page 
         webView.loadUrl("file:///android_asset/AutoCloseOnBack.html");
     }
 }

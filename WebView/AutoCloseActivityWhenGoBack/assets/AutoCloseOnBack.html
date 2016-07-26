@@ -1,5 +1,7 @@
 <script type="text/javascript">
     console.log("history.length:"+history.length);
+    // first time open this page, history lenght is 1.
+    // become 2 when back
     if (history.length > 1) {
         androidInterface.reqCloseActivity();
     } else {
