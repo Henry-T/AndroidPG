@@ -1,0 +1,14 @@
+<script type="text/javascript">
+    console.log("history.length:"+history.length);
+    if (history.length > 1) {
+        androidInterface.reqCloseActivity();
+    } else {
+        setTimeout(function(){
+            window.location.href=androidInterface.getParam1()
+        }, 100);
+    }
+</script>
+<head><title>AutoCloseOnBack</title></head>
+<body>
+<br>
+</body>
