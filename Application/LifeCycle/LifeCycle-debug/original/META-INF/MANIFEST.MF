@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: 1.3.0
+Created-By: Android Gradle 1.3.0
+
+Name: AndroidManifest.xml
+SHA1-Digest: SKwDB62SEEY2bGradpBC5NToVto=
+
+Name: classes.dex
+SHA1-Digest: utMQUs/Oi/ZRjpRnWCNDXnV8J1E=
+

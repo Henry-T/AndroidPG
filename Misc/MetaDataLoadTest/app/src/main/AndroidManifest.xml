@@ -18,6 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data android:name="BooleanT" android:value="true" />
+        <meta-data android:name="BooleanF" android:value="false" />
         <meta-data android:name="Int" android:value="12345" />
         <meta-data android:name="Long" android:value="9123456789" />
         <meta-data android:name="ShortFloat" android:value="1.2345" />

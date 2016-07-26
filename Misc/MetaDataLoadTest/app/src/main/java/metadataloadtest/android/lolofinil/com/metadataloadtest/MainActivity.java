@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
             ApplicationInfo appInfo = getPackageManager().getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA);
             Bundle AppInfoBundle = appInfo.metaData;
             Log.i(TAG, "=== get() ===");
+            Log.i(TAG, "get(\"BooleanT\"): " + AppInfoBundle.get("BooleanT"));
             Log.i(TAG, "get(\"Int\"): " + AppInfoBundle.get("Int"));
             Log.i(TAG, "get(\"Long\"): " + AppInfoBundle.get("Long"));
             Log.i(TAG, "get(\"ShortFloat\"): " + AppInfoBundle.get("ShortFloat"));
@@ -58,12 +59,15 @@ public class MainActivity extends AppCompatActivity {
             Log.i(TAG, "getDouble(\"LongLongFloat\"): " + AppInfoBundle.getDouble("LongLongFloat"));
             Log.i(TAG, "getDouble(\"NumberInString\"): " + AppInfoBundle.getDouble("NumberInString"));
             Log.i(TAG, "=== getString() ===");
+            Log.i(TAG, "getString(\"BooleanT\"): " + AppInfoBundle.getString("BooleanT"));
             Log.i(TAG, "getString(\"Int\"): " + AppInfoBundle.getString("Int"));
             Log.i(TAG, "getString(\"Long\"): " + AppInfoBundle.getString("Long"));
             Log.i(TAG, "getString(\"ShortFloat\"): " + AppInfoBundle.getString("ShortFloat"));
             Log.i(TAG, "getString(\"LongFloat\"): " + AppInfoBundle.getString("LongFloat"));
             Log.i(TAG, "getString(\"NumberInString\"): " + AppInfoBundle.getString("NumberInString"));
-
+            Log.i(TAG, "=== getBoolean() ===");
+            Log.i(TAG, "getBoolean(\"BooleanT\"): " + AppInfoBundle.getBoolean("BooleanT"));
+            
 
         }catch(PackageManager.NameNotFoundException ex) {
             Log.i(TAG, ex.toString());
