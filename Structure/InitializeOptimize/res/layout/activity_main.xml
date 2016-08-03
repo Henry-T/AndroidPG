@@ -14,25 +14,82 @@
         android:paddingLeft="5dp"
         android:paddingRight="5dp">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tv_asyncInitSecouds"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" 
+                android:text="8"
+                />
+            <SeekBar
+                android:id="@+id/seekBar_asyncInitSeconds"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:max="10"
+                android:progress="8"
+                android:secondaryProgress="0" />
+            </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tv_timeoutSecouds"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" 
+                android:text="6"
+                />
+            <SeekBar
+                android:id="@+id/seekBar_timeoutSeconds"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:max="10"
+                android:progress="6"
+                android:secondaryProgress="0" />
+        </LinearLayout>
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Initialize (async init takes 5s)"
+            android:text="Initialize"
+            android:textAllCaps="false"
             android:id="@+id/btnInitialize" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="API_DependsOnSyncInit"
-            android:id="@+id/btnAPIDependsSyncInit" />
+            android:textAllCaps="false"
+            android:id="@+id/btnAPI_DependsSyncInit" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="API_DependsOnAsyncInit"
-            android:id="@+id/btnAPIDependsAsyncInit" />
+            android:text="SyncAPI_DependsOnAsyncInit"
+            android:textAllCaps="false"
+            android:id="@+id/btnSyncAPI_DependsAsyncInit" />
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="AsyncAPI_DependsOnAsyncInit"
+            android:textAllCaps="false"
+            android:id="@+id/btnAsyncAPI_DependsAsyncInit" />
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Deinitialize"
+            android:textAllCaps="false"
+            android:id="@+id/btnDeinitialize" />
 
     </LinearLayout>
 
