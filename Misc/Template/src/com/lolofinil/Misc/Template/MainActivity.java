@@ -10,13 +10,32 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.util.Log;
 
 public class MainActivity extends Activity {
-    public static String TAG = MainActivity.class.getSimpleName();
+    private static String tag = MainActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        btnHello.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String msg = "hello world!";
+                Log.i(tag, msg);
+                Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+                new AlertDialog.Builder(MainActivity.this)
+                    .setTitle("AlertDialog")
+                    .setMessage(msg)
+                    .setPositiveButton("OK", new OnClickListener(){
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                          dialog.dismiss();
+                        }
+                    }).show();
+            }
+        });
     }
 }
