@@ -30,7 +30,7 @@ public class WebViewActivity extends Activity {
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                if (url.startsWith("weixin:")){
+                if (url.startsWith("weixin:") || url.startsWith("mqqapi")){
                     Intent intent = new Intent(Intent.ACTION_VIEW,
                             Uri.parse(url));
                     startActivity(intent);
@@ -53,6 +53,7 @@ public class WebViewActivity extends Activity {
                 public String getParam1() {
                     // NEXT 
                     return "file:///android_asset/ExampleThirdPartyPage.html";
+                    // return "https://myun.tenpay.com/mqq/pay/index.shtml?_wv=1027&t=1V007e24b13a928f50e985b829dc1d27";
                 }
             }, "androidInterface");
         }
