@@ -13,7 +13,11 @@ public abstract class SingleFragmentActivity extends FragmentActivity {
     protected abstract Fragment createFragment();
 
     protected  int getLayoutResId() {
+<<<<<<< HEAD
         return getResources().getIdentifier("activity_single_fragment", "layout", getPackageName());
+=======
+        return getResources().getIdentifier("activity_apowobaselib_single_fragment", "layout", getPackageName());
+>>>>>>> f2cfa14a66e986e4ed2d9677aecbc67db5cc9315
     }
 
     @Override

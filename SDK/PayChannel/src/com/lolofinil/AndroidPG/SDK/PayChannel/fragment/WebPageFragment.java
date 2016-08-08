@@ -83,7 +83,11 @@ public class WebPageFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+<<<<<<< HEAD
         View v = inflater.inflate(getResources().getIdentifier("fragment_web_page", "layout", getActivity().getPackageName()), container, false);
+=======
+        View v = inflater.inflate(getResources().getIdentifier("fragment_apowobaselib_web_page", "layout", getActivity().getPackageName()), container, false);
+>>>>>>> f2cfa14a66e986e4ed2d9677aecbc67db5cc9315
 
         // final ProgressDialog dialog = ProgressDialog.show(getActivity(), "", "请稍等...");
 
@@ -92,7 +96,11 @@ public class WebPageFragment extends Fragment {
         mWebView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
+<<<<<<< HEAD
                 if (url.startsWith("weixin:") || url.startsWith("mqqapi:")){
+=======
+                if (url.startsWith("weixin:")){
+>>>>>>> f2cfa14a66e986e4ed2d9677aecbc67db5cc9315
                     Intent intent = new Intent(Intent.ACTION_VIEW,
                             Uri.parse(url));
                     startActivity(intent);
