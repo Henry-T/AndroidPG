@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import android.util.Log;
+import android.content.DialogInterface;
 
 public class MainActivity extends Activity {
     private static String tag = MainActivity.class.getSimpleName();
@@ -19,6 +20,8 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Button btnHello = (Button)findViewById(R.id.btnHello);
 
         btnHello.setOnClickListener(new View.OnClickListener() {
             @Override

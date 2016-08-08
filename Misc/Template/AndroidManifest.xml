@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.lolofinil.AndroidPG.Misc.Tempate" >
+    package="com.lolofinil.AndroidPG.Misc.Template" >
 
     <uses-sdk
         android:minSdkVersion="17" />
