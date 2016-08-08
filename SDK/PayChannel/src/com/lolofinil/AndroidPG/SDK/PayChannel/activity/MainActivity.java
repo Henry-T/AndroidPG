@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 package com.lolofinil.AndroidPG.SDK.PayChannel.activity;
-=======
-package com.lolofinil.AndroidPG.SDK.PayChannel;
->>>>>>> f2cfa14a66e986e4ed2d9677aecbc67db5cc9315
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -16,11 +12,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.gson.JsonObject;
-<<<<<<< HEAD
 import com.lolofinil.AndroidPG.SDK.PayChannel.R;
-=======
-import com.lolofinil.AndroidPG.SDK.PayChannel.activity.WebPageActivity;
->>>>>>> f2cfa14a66e986e4ed2d9677aecbc67db5cc9315
 import com.lolofinil.AndroidPG.SDK.PayChannel.util.EHttpResponseStatus;
 import com.lolofinil.AndroidPG.SDK.PayChannel.util.HttpRequestTask;
 import com.lolofinil.AndroidPG.SDK.PayChannel.util.HttpResponseInfo;
