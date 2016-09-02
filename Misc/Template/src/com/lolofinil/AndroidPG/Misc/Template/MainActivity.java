@@ -32,7 +32,7 @@ public class MainActivity extends Activity {
                 new AlertDialog.Builder(MainActivity.this)
                     .setTitle("AlertDialog")
                     .setMessage(msg)
-                    .setPositiveButton("OK", new OnClickListener(){
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener(){
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                           dialog.dismiss();

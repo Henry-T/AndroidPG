@@ -10,3 +10,5 @@ build
 .gradle
 *.iml
 .idea
+*.class
+*.swp
