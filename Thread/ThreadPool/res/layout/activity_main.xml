@@ -17,15 +17,11 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Http Get for non-exist host"
+            android:text="Hello World"
             android:id="@+id/btnHello"
             />
 
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="New Text\nfadfag"
-            android:id="@+id/textView" />
+
 
     </LinearLayout>
 
