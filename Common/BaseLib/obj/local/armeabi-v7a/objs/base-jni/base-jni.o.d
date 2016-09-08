@@ -1,5 +1,5 @@
-E:/Playground/AndroidPG/Common/BaseLib//obj/local/armeabi-v7a/objs/base-jni/base-jni.o: \
- E:/Playground/AndroidPG/Common/BaseLib//jni/base-jni.cpp \
+E:/PlayGround/AndroidPG/common/BaseLib//obj/local/armeabi-v7a/objs/base-jni/base-jni.o: \
+ E:/PlayGround/AndroidPG/common/BaseLib//jni/base-jni.cpp \
  D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/iostream \
  D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_prolog.h \
  D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_cprolog.h \
@@ -162,10 +162,10 @@ E:/Playground/AndroidPG/Common/BaseLib//obj/local/armeabi-v7a/objs/base-jni/base
  D:/Development/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/asm/sockios.h \
  D:/Development/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/linux/sockios.h \
  D:/Development/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/linux/uio.h \
- E:/Playground/AndroidPG/Common/BaseLib//jni/ares.h \
- E:/Playground/AndroidPG/Common/BaseLib//jni/ares_version.h \
- E:/Playground/AndroidPG/Common/BaseLib//jni/ares_build.h \
- E:/Playground/AndroidPG/Common/BaseLib//jni/ares_rules.h \
+ E:/PlayGround/AndroidPG/common/BaseLib//jni/ares.h \
+ E:/PlayGround/AndroidPG/common/BaseLib//jni/ares_version.h \
+ E:/PlayGround/AndroidPG/common/BaseLib//jni/ares_build.h \
+ E:/PlayGround/AndroidPG/common/BaseLib//jni/ares_rules.h \
  D:/Development/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/sys/select.h \
  D:/Development/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/netinet/in.h \
  D:/Development/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/endian.h \
@@ -179,7 +179,7 @@ E:/Playground/AndroidPG/Common/BaseLib//obj/local/armeabi-v7a/objs/base-jni/base
  D:/Development/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/linux/in6.h \
  D:/Development/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/linux/ipv6.h \
  D:/Development/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/netinet/in6.h \
- E:/Playground/AndroidPG/Common/BaseLib//jni/ares_dns.h
+ E:/PlayGround/AndroidPG/common/BaseLib//jni/ares_dns.h
 
 D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/iostream:
 
@@ -505,13 +505,13 @@ D:/Development/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/linux/so
 
 D:/Development/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/linux/uio.h:
 
-E:/Playground/AndroidPG/Common/BaseLib//jni/ares.h:
+E:/PlayGround/AndroidPG/common/BaseLib//jni/ares.h:
 
-E:/Playground/AndroidPG/Common/BaseLib//jni/ares_version.h:
+E:/PlayGround/AndroidPG/common/BaseLib//jni/ares_version.h:
 
-E:/Playground/AndroidPG/Common/BaseLib//jni/ares_build.h:
+E:/PlayGround/AndroidPG/common/BaseLib//jni/ares_build.h:
 
-E:/Playground/AndroidPG/Common/BaseLib//jni/ares_rules.h:
+E:/PlayGround/AndroidPG/common/BaseLib//jni/ares_rules.h:
 
 D:/Development/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/sys/select.h:
 
@@ -539,4 +539,4 @@ D:/Development/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/linux/ip
 
 D:/Development/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/netinet/in6.h:
 
-E:/Playground/AndroidPG/Common/BaseLib//jni/ares_dns.h:
+E:/PlayGround/AndroidPG/common/BaseLib//jni/ares_dns.h:

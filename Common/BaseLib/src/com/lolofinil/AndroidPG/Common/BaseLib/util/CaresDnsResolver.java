@@ -34,7 +34,4 @@ public class CaresDnsResolver implements DnsResolver {
 
     public native String stringFromJNI();
 
-    static {
-        System.loadLibrary("base-jni");
-    }
 }

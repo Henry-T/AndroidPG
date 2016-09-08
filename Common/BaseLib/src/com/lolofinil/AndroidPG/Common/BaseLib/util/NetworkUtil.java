@@ -26,12 +26,8 @@ import cz.msebera.android.httpclient.conn.HttpClientConnectionManager;
 import cz.msebera.android.httpclient.conn.socket.ConnectionSocketFactory;
 import cz.msebera.android.httpclient.conn.socket.PlainConnectionSocketFactory;
 import cz.msebera.android.httpclient.conn.ssl.SSLConnectionSocketFactory;
-import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
 import cz.msebera.android.httpclient.impl.client.HttpClientBuilder;
 import cz.msebera.android.httpclient.impl.conn.BasicHttpClientConnectionManager;
-import cz.msebera.android.httpclient.impl.conn.InMemoryDnsResolver;
-import cz.msebera.android.httpclient.params.HttpConnectionParams;
-import cz.msebera.android.httpclient.params.HttpParams;
 import cz.msebera.android.httpclient.util.EntityUtils;
 
 /**
@@ -41,6 +37,7 @@ public class NetworkUtil {
     private static String tag = NetworkUtil.class.getSimpleName();
 
     public static HttpResponseInfo RequestWithApacheHttpClient(String url, String reservedDNS, String preresolvedHost) {
+        // todo note HttpClientBuilder
         HttpClientBuilder builder = HttpClientBuilder.create();
         HttpClientConnectionManager connManager = null;
         if (!TextUtils.isEmpty(reservedDNS)) {

@@ -15,12 +15,14 @@
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
+LOCAL_MODULE := libcares
+LOCAL_SRC_FILES := libcares.a
+include $(PREBUILT_STATIC_LIBRARY)
 
+include $(CLEAR_VARS)
 LOCAL_MODULE    := base-jni
 LOCAL_SRC_FILES := base-jni.cpp
-LOCAL_SRC_FILES := libcares.a
+
+LOCAL_STATIC_LIBRARIES := libcares
 
 include $(BUILD_SHARED_LIBRARY)
-
-# LOCAL_SHARED_LIBRARIES :=libcares.so
-# LOCAL_STATIC_LIBRARIES := libcares

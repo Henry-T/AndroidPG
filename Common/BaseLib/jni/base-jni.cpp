@@ -87,79 +87,103 @@ void ResolvedCallback(void *data, int status, int timeouts, struct hostent *host
   g_jEnv->CallVoidMethod(g_jObj, g_jOnResolvedCallbackID, jStrRet);
 }
 
+extern "C" {
+  /* This is a trivial JNI example where we use a native method
+   * to return a new VM String. See the corresponding Java source
+   * file located at:
+   *
+   *   apps/samples/hello-jni/project/src/com/example/hellojni/HelloJni.java
+   */
+  // todo remove jstring
+  jboolean  // jboolean
+  Java_com_lolofinil_AndroidPG_Common_BaseLib_util_CaresDnsResolver_caresResolve(JNIEnv* jEnv, jobject jObj, jstring dns, jstring domain)
+  {
+    g_jEnv = jEnv;
+    g_jObj = jObj;
 
-/* This is a trivial JNI example where we use a native method
- * to return a new VM String. See the corresponding Java source
- * file located at:
- *
- *   apps/samples/hello-jni/project/src/com/example/hellojni/HelloJni.java
- */
-// todo remove jstring
-extern "C"
-jstring  // jboolean
-Java_com_lolofinil_AndroidPG_Common_BaseLib_util_CaresDnsResolver_caresResolve(JNIEnv* jEnv, jobject jObj, jstring dns, jstring domain)
-{
-  g_jEnv = jEnv;
-  g_jObj = jObj;
+    jclass jObjClass = jEnv->GetObjectClass(jObj);
+    if (jObjClass == NULL) {
+      std::cout<<"failed to find class"<<std::endl;
+      return false;
+    }
 
-  jclass jObjClass = jEnv->GetObjectClass(jObj);
-  if (jObjClass == NULL) {
-    std::cout<<"failed to find class"<<std::endl;
-    return false;
+    g_jOnResolvedCallbackID = jEnv->GetMethodID(jObjClass, "cares_onResolved", "(Ljava/lang/String;)V");
+    if (g_jOnResolvedCallbackID == NULL) {
+      std::cout<<"unable to get method"<<std::endl;
+      return false;
+    }
+
+    // todo note ares's name means domain
+    const char *dnsStr = jEnv->GetStringUTFChars(dns, 0);
+    const char *donmainStr = jEnv->GetStringUTFChars(domain, 0);
+    // const char *dnsStr = jEnv->GetStringUTFChars(jEnv, dns, 0);
+    // const char *donmainStr = jEnv->GetStringUTFChars(jEnv, domain, 0);
+
+    ares_options opts;
+    opts.nservers = 2;
+    opts.servers = (struct in_addr*)malloc(opts.nservers*sizeof(struct in_addr));
+    opts.servers[0].s_addr = htonl(0x72727272); // todo use dnsStr
+
+    int optmask = ARES_OPT_SERVERS;
+
+    ares_channel channel = NULL;
+    ares_init_options(&channel, &opts, optmask);
+
+    ares_init(&channel);
+
+
+    ares_gethostbyname(channel, donmainStr, AF_INET, ResolvedCallback, NULL);
+    return true;
+    // return jEnv->NewStringUTF("test");
   }
 
-  g_jOnResolvedCallbackID = jEnv->GetMethodID(jObjClass, "cares_onResolved", "(I)V");
-  if (g_jOnResolvedCallbackID == NULL) {
-    std::cout<<"unable to get method"<<std::endl;
-    return false;
-  }
-
-  // todo note ares's name means domain
-  const char *dnsStr = jEnv->GetStringUTFChars(dns, 0);
-  const char *donmainStr = jEnv->GetStringUTFChars(domain, 0);
-  // const char *dnsStr = jEnv->GetStringUTFChars(jEnv, dns, 0);
-  // const char *donmainStr = jEnv->GetStringUTFChars(jEnv, domain, 0);
-
-  ares_options opts;
-  opts.nservers = 2;
-  opts.servers = (struct in_addr*)malloc(opts.nservers*sizeof(struct in_addr));
-  opts.servers[0].s_addr = htonl(0x72727272); // todo use dnsStr
-
-  int optmask = ARES_OPT_SERVERS;
-
-  ares_channel channel = NULL;
-  ares_init_options(&channel, &opts, optmask);
-
-  ares_init(&channel);
-
-
-  ares_gethostbyname(channel, donmainStr, AF_INET, ResolvedCallback, NULL);
-  // return true;
-  return (*jEnv)->NewStringUTF(jEnv, "test");
-}
-
-extern "C"
-jstring
-Java_com_lolofinil_AndroidPG_Common_BaseLib_util_CaresDnsResolver_caresResolve__Ljava_lang_String_2Ljava_lang_String_2( JNIEnv* env,
-                                                  jobject thiz )
-{
-#if defined(__arm__)
-  #if defined(__ARM_ARCH_7A__)
-    #if defined(__ARM_NEON__)
-      #define ABI "armeabi-v7a/NEON"
+  jstring
+  Java_com_lolofinil_AndroidPG_Common_BaseLib_util_CaresDnsResolver_caresResolve__Ljava_lang_String_2Ljava_lang_String_2( JNIEnv* env,
+                                                    jobject thiz )
+  {
+  #if defined(__arm__)
+    #if defined(__ARM_ARCH_7A__)
+      #if defined(__ARM_NEON__)
+        #define ABI "armeabi-v7a/NEON"
+      #else
+        #define ABI "armeabi-v7a"
+      #endif
     #else
-      #define ABI "armeabi-v7a"
+     #define ABI "armeabi"
     #endif
+  #elif defined(__i386__)
+     #define ABI "x86"
+  #elif defined(__mips__)
+     #define ABI "mips"
   #else
-   #define ABI "armeabi"
+     #define ABI "unknown"
   #endif
-#elif defined(__i386__)
-   #define ABI "x86"
-#elif defined(__mips__)
-   #define ABI "mips"
-#else
-   #define ABI "unknown"
-#endif
+      return env->NewStringUTF("Hello from JNI !  Compiled with ABI " ABI ".");
+      // return (*env)->NewStringUTF(env, "Hello from JNI !  Compiled with ABI " ABI ".");
+  }
 
-    return (*env)->NewStringUTF(env, "Hello from JNI !  Compiled with ABI " ABI ".");
+  JNIEXPORT jstring JNICALL Java_com_lolofinil_AndroidPG_Common_BaseLib_util_CaresDnsResolver_stringFromJNI(JNIEnv* env, jobject thiz)
+  {
+  #if defined(__arm__)
+    #if defined(__ARM_ARCH_7A__)
+      #if defined(__ARM_NEON__)
+        #define ABI "armeabi-v7a/NEON"
+      #else
+        #define ABI "armeabi-v7a"
+      #endif
+    #else
+     #define ABI "armeabi"
+    #endif
+  #elif defined(__i386__)
+     #define ABI "x86"
+  #elif defined(__mips__)
+     #define ABI "mips"
+  #else
+     #define ABI "unknown"
+  #endif
+
+      // return (*env)->NewStringUTF(env, "Hello from JNI !  Compiled with ABI " ABI ".");
+      return env->NewStringUTF("Hello from JNI !  Compiled with ABI " ABI ".");
+  }
+
 }

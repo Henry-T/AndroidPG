@@ -13,6 +13,7 @@ import android.widget.Toast;
 import android.util.Log;
 import android.content.DialogInterface;
 
+import com.lolofinil.AndroidPG.Common.BaseLib.util.CaresDnsResolver;
 import com.lolofinil.AndroidPG.Common.BaseLib.util.EStringFormat;
 import com.lolofinil.AndroidPG.Common.BaseLib.util.HttpRequestAgent;
 import com.lolofinil.AndroidPG.Common.BaseLib.util.HttpRequestTask;
@@ -20,18 +21,27 @@ import com.lolofinil.AndroidPG.Common.BaseLib.util.HttpResponseInfo;
 import com.lolofinil.AndroidPG.Common.BaseLib.util.IHttpRequestHandler;
 import com.lolofinil.AndroidPG.Common.BaseLib.util.Util;
 
+import java.io.Console;
 import java.net.HttpRetryException;
 import java.util.ArrayList;
 import java.util.List;
 // import com.lolofinil.AndroidPG
 
 public class MainActivity extends Activity {
+    static {
+        System.loadLibrary("base-jni");
+    }
+
     private static String tag = MainActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        CaresDnsResolver testDnsResolver = new CaresDnsResolver("123");
+        Log.i(tag, "JNI Thread Test:"+testDnsResolver.stringFromJNI());
 
         Button btnHello = (Button)findViewById(R.id.btnHello);
         btnHello.setOnClickListener(new View.OnClickListener() {
