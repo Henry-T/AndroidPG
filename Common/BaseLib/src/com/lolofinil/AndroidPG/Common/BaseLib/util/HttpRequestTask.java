@@ -3,6 +3,9 @@ package com.lolofinil.AndroidPG.Common.BaseLib.util;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import cz.msebera.android.httpclient.client.HttpClient;
+import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
+
 public class HttpRequestTask extends AsyncTask<String, String, HttpResponseInfo> {
 	private static String tag = HttpRequestTask.class.getSimpleName();
 
@@ -20,7 +23,8 @@ public class HttpRequestTask extends AsyncTask<String, String, HttpResponseInfo>
 
 	@Override
 	protected HttpResponseInfo doInBackground(String... url) {
-		HttpResponseInfo responseInfo = NetworkUtil.RequestWithApacheHttpClient(url[0]);
+		HttpClient httpClient = new DefaultHttpClient();
+		HttpResponseInfo responseInfo = NetworkUtil.RequestWithApacheHttpClient(url[0], null, null);
 		if (responseInfo.Status == EHttpResponseStatus.Succeed && !ValidUtil.ValidStringFormat(responseInfo.Content, ExpectedResponseBodyFormat))
 			responseInfo.Status = EHttpResponseStatus.UnexpectedResponseBodyFormat;
 		return responseInfo;

@@ -21,6 +21,8 @@ import com.lolofinil.AndroidPG.Common.BaseLib.util.IHttpRequestHandler;
 import com.lolofinil.AndroidPG.Common.BaseLib.util.Util;
 
 import java.net.HttpRetryException;
+import java.util.ArrayList;
+import java.util.List;
 // import com.lolofinil.AndroidPG
 
 public class MainActivity extends Activity {
@@ -32,7 +34,6 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         Button btnHello = (Button)findViewById(R.id.btnHello);
-
         btnHello.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,6 +66,34 @@ public class MainActivity extends Activity {
 
                 httpRequestAgent.execute("http://sdk.apowogame.com/api/gettimestamp");
 //                httpRequestAgent.execute("http://www.lolofinil.com");
+            }
+        });
+
+        Button btn2 = (Button)findViewById(R.id.btn2);
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                List<String> dnsList = new ArrayList<String>();
+                dnsList.add("114.114.114.114");
+                HttpRequestAgent httpRequestAgent = new HttpRequestAgent(MainActivity.this, dnsList, null, EStringFormat.JSON, new IHttpRequestHandler() {
+                    @Override
+                    public void Callback(HttpResponseInfo httpResponseInfo) {
+                        Log.i(tag, httpResponseInfo.Content);
+                    }
+                }, new IHttpRequestHandler() {
+                    @Override
+                    public void Callback(HttpResponseInfo httpResponseInfo) {
+                        Log.i(tag, httpResponseInfo.Content);
+                        String msg = "Status: " + httpResponseInfo.Status.name()+"\n";
+                        if (TextUtils.isEmpty(httpResponseInfo.Content)) {
+                            msg += "Content: <empty>";
+                        } else {
+                            msg += "Content: " + httpResponseInfo.Content.subSequence(0, 50>httpResponseInfo.Content.length()-1?httpResponseInfo.Content.length()-1:50);
+                        }
+                        Util.ShowAlert(MainActivity.this, msg);
+                    }
+                });
+                httpRequestAgent.execute("http://www.lolofinil.com");
             }
         });
     }

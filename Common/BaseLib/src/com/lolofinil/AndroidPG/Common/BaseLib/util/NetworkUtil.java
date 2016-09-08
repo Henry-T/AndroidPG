@@ -1,27 +1,38 @@
 package com.lolofinil.AndroidPG.Common.BaseLib.util;
 
-import android.net.Network;
+import android.text.TextUtils;
 import android.util.Log;
 
-import org.apache.http.Header;
-import org.apache.http.HeaderIterator;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.StatusLine;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.conn.ConnectTimeoutException;
-import org.apache.http.conn.
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.params.HttpConnectionParams;
-import org.apache.http.params.HttpParams;
-import org.apache.http.util.EntityUtils;
-
 import java.io.IOException;
+import java.net.Inet4Address;
+import java.net.InetAddress;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
+
+import cz.msebera.android.httpclient.Header;
+import cz.msebera.android.httpclient.HeaderIterator;
+import cz.msebera.android.httpclient.HttpEntity;
+import cz.msebera.android.httpclient.HttpResponse;
+import cz.msebera.android.httpclient.HttpStatus;
+import cz.msebera.android.httpclient.StatusLine;
+import cz.msebera.android.httpclient.client.ClientProtocolException;
+import cz.msebera.android.httpclient.client.HttpClient;
+import cz.msebera.android.httpclient.client.config.RequestConfig;
+import cz.msebera.android.httpclient.client.methods.HttpGet;
+import cz.msebera.android.httpclient.config.RegistryBuilder;
+import cz.msebera.android.httpclient.conn.ConnectTimeoutException;
+import cz.msebera.android.httpclient.conn.DnsResolver;
+import cz.msebera.android.httpclient.conn.HttpClientConnectionManager;
+import cz.msebera.android.httpclient.conn.socket.ConnectionSocketFactory;
+import cz.msebera.android.httpclient.conn.socket.PlainConnectionSocketFactory;
+import cz.msebera.android.httpclient.conn.ssl.SSLConnectionSocketFactory;
+import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
+import cz.msebera.android.httpclient.impl.client.HttpClientBuilder;
+import cz.msebera.android.httpclient.impl.conn.BasicHttpClientConnectionManager;
+import cz.msebera.android.httpclient.impl.conn.InMemoryDnsResolver;
+import cz.msebera.android.httpclient.params.HttpConnectionParams;
+import cz.msebera.android.httpclient.params.HttpParams;
+import cz.msebera.android.httpclient.util.EntityUtils;
 
 /**
  * Created by Henry on 9/5/2016.
@@ -29,20 +40,33 @@ import java.net.UnknownHostException;
 public class NetworkUtil {
     private static String tag = NetworkUtil.class.getSimpleName();
 
-    public static HttpResponseInfo RequestWithApacheHttpClient(String url) {
-        HttpClient httpClient = new DefaultHttpClient();
+    public static HttpResponseInfo RequestWithApacheHttpClient(String url, String reservedDNS, String preresolvedHost) {
+        HttpClientBuilder builder = HttpClientBuilder.create();
+        HttpClientConnectionManager connManager = null;
+        if (!TextUtils.isEmpty(reservedDNS)) {
+            connManager = NetworkUtil.CreateHttpClientConnectionManagerWithCustomDNSServer(reservedDNS);
+        } else if (!TextUtils.isEmpty(preresolvedHost)) {
+            connManager = NetworkUtil.CreateHttpClientConnectionManagerWithForceIP(preresolvedHost);
+        }
+        if (connManager!=null)
+            builder.setConnectionManager(connManager);
+
+        int DefaultTimeout = 5000;
+        RequestConfig requestConfig = RequestConfig.custom()
+                .setConnectTimeout(DefaultTimeout)
+                .setSocketTimeout(DefaultTimeout)
+                .setConnectionRequestTimeout(DefaultTimeout).build();
+        builder.setDefaultRequestConfig(requestConfig);
+
+        HttpClient httpClient = builder.build();
+
         HttpResponse response;
         Long startTime = (long) 0;
-
         HttpResponseInfo responseInfo = new HttpResponseInfo();
-
         try {
             Log.i(tag, "Http 请求:" + url);
             HttpGet httpGet = new HttpGet(url);
 
-            HttpParams params = httpClient.getParams();
-            HttpConnectionParams.setConnectionTimeout(params, 5000); // 50000
-            HttpConnectionParams.setSoTimeout(params, 5000); // 50000
 
             startTime = System.currentTimeMillis();
             response = httpClient.execute(httpGet);
@@ -68,7 +92,7 @@ public class NetworkUtil {
                 String bodyStr = EntityUtils.toString(entity, encoding);
                 Log.i(tag, "Content: "+bodyStr);
 
-                // content may be empty with this approach
+                // todo note  content may be empty with this approach
 //				ByteArrayOutputStream out = new ByteArrayOutputStream();
 //				response.getEntity().writeTo(out);
 //				responseString = out.toString();
@@ -145,26 +169,27 @@ public class NetworkUtil {
         return null;
     }
 
-    public static void CreateHttpClientConnectionManager(String domain, String ip) {
-        /* Custom DNS resolver */
-        DnsResolver dnsResolver = new SystemDefaultDnsResolver() {
+    private static DnsResolver createDNSResolverWithDnsServer(String dnsServer) {
+        return new CaresDnsResolver(dnsServer);
+    }
+
+    private static DnsResolver createDNSResolverWithForceIP(final String ip) {
+        // todo note InMemoryDnsResolver with custom HttpClientConnectionManager
+        DnsResolver dnsResolver = new DnsResolver() {
             @Override
-            public InetAddress[] resolve(final String host) throws UnknownHostException {
-                if (host.equalsIgnoreCase("my.host.com")) {
-            /* If we match the host we're trying to talk to,
-               return the IP address we want, not what is in DNS */
-                    return new InetAddress[] { InetAddress.getByName("127.0.0.1") };
-                } else {
-            /* Else, resolve it as we would normally */
-                    return super.resolve(host);
-                }
+            public InetAddress[] resolve(String s) throws UnknownHostException {
+                InetAddress addr = Inet4Address.getByName(ip);
+                return new InetAddress[]{addr};
             }
         };
+        return dnsResolver;
+    }
 
-/* HttpClientConnectionManager allows us to use custom DnsResolver */
+    private static HttpClientConnectionManager createHttpClientConnectionManager(DnsResolver dnsResolver) {
+        // todo note create custom HttpClientConnectionManager
         BasicHttpClientConnectionManager connManager = new BasicHttpClientConnectionManager(
-    /* We're forced to create a SocketFactory Registry.  Passing null
-       doesn't force a default Registry, so we re-invent the wheel. */
+        /* We're forced to create a SocketFactory Registry.  Passing null
+        doesn't force a default Registry, so we re-invent the wheel. */
                 RegistryBuilder.<ConnectionSocketFactory>create()
                         .register("http", PlainConnectionSocketFactory.getSocketFactory())
                         .register("https", SSLConnectionSocketFactory.getSocketFactory())
@@ -173,6 +198,16 @@ public class NetworkUtil {
                 null, /* Default SchemePortResolver */
                 dnsResolver  /* Our DnsResolver */
         );
+        return connManager;
+    }
 
+    public static HttpClientConnectionManager CreateHttpClientConnectionManagerWithCustomDNSServer(String dnsServer) {
+        DnsResolver dnsResolver = createDNSResolverWithDnsServer(dnsServer);
+        return createHttpClientConnectionManager(dnsResolver);
+    }
+
+    public static HttpClientConnectionManager CreateHttpClientConnectionManagerWithForceIP( String ip) {
+        DnsResolver dnsResolver = createDNSResolverWithForceIP(ip);
+        return createHttpClientConnectionManager(dnsResolver);
     }
 }

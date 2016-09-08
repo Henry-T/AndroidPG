@@ -2,16 +2,23 @@ package com.lolofinil.AndroidPG.Common.BaseLib.util;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
+import android.net.Network;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.text.TextUtils;
 import android.util.Log;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.impl.client.DefaultHttpClient;
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import cz.msebera.android.httpclient.HttpResponse;
+import cz.msebera.android.httpclient.client.HttpClient;
+import cz.msebera.android.httpclient.conn.HttpClientConnectionManager;
+import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
+import cz.msebera.android.httpclient.impl.client.HttpClientBuilder;
 
 // todo support network availability check
 
@@ -105,11 +112,7 @@ public class HttpRequestAgent extends AsyncTask<String, String, HttpResponseInfo
     }
 
     private HttpResponseInfo requestOnce(String reservedDNS, String preresolvedHost, EStringFormat expectedResponseBodyFormat) {
-        HttpClient httpClient = new DefaultHttpClient();
-        HttpResponse response;
-        Long startTime = (long) 0;
-
-        HttpResponseInfo responseInfo = HttpRequestTask.RequestWithApacheHttpClient(url);
+        HttpResponseInfo responseInfo = NetworkUtil.RequestWithApacheHttpClient(url, reservedDNS, preresolvedHost);
         if (responseInfo.Status == EHttpResponseStatus.Succeed && !ValidUtil.ValidStringFormat(responseInfo.Content, expectedResponseBodyFormat))
             responseInfo.Status = EHttpResponseStatus.UnexpectedResponseBodyFormat;
         return responseInfo;
