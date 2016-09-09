@@ -29,7 +29,7 @@ import java.util.List;
 
 public class MainActivity extends Activity {
     static {
-        System.loadLibrary("base-jni");
+        System.loadLibrary("base");
     }
 
     private static String tag = MainActivity.class.getSimpleName();

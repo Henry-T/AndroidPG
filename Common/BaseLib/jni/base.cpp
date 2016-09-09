@@ -27,7 +27,7 @@
 #include <ares_dns.h>
 using namespace std;
 
-#define  LOG_TAG    "base-jni.cpp"
+#define  LOG_TAG    "base.cpp"
 #define  LOGD(...)  __android_log_print(ANDROID_LOG_DEBUG,LOG_TAG,__VA_ARGS__)
 
 typedef unsigned char byte;

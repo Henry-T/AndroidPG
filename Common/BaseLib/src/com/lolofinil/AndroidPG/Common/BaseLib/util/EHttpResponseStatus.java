@@ -8,7 +8,7 @@ public enum EHttpResponseStatus {
 	ConnectionTimedOut(4), 						// 连接超时
 	UnknownHost(5), 							// 域名无法解析
 	NetworkUnavailable(6),						// 未连接网络
-	UnexpectedResponseBodyFormat(6); 			// 响应信息格式与预期不符
+	UnexpectedResponseBodyFormat(7); 			// 响应信息格式与预期不符
 
 	private final int id;
 	EHttpResponseStatus(int id) { this.id = id; }
