@@ -21,8 +21,8 @@ LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE    := base-jni
-# LOCAL_STATIC_LIBRARIES := libcares_
-LOCAL_WHOLE_STATIC_LIBRARIES := libcares
+LOCAL_STATIC_LIBRARIES := libcares
+# LOCAL_WHOLE_STATIC_LIBRARIES := libcares
 LOCAL_SRC_FILES := base-jni.cpp
 LOCAL_LDLIBS := -llog
 
