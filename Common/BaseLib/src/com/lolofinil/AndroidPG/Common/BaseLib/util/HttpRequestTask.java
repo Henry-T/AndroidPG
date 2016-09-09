@@ -24,7 +24,7 @@ public class HttpRequestTask extends AsyncTask<String, String, HttpResponseInfo>
 	@Override
 	protected HttpResponseInfo doInBackground(String... url) {
 		HttpClient httpClient = new DefaultHttpClient();
-		HttpResponseInfo responseInfo = NetworkUtil.RequestWithApacheHttpClient(url[0], null, null);
+		HttpResponseInfo responseInfo = NetworkUtil.RequestWithMesberaHttpClient(url[0], null, null);
 		if (responseInfo.Status == EHttpResponseStatus.Succeed && !ValidUtil.ValidStringFormat(responseInfo.Content, ExpectedResponseBodyFormat))
 			responseInfo.Status = EHttpResponseStatus.UnexpectedResponseBodyFormat;
 		return responseInfo;

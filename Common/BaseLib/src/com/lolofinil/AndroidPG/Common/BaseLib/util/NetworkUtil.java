@@ -36,8 +36,7 @@ import cz.msebera.android.httpclient.util.EntityUtils;
 public class NetworkUtil {
     private static String tag = NetworkUtil.class.getSimpleName();
 
-    public static HttpResponseInfo RequestWithApacheHttpClient(String url, String reservedDNS, String preresolvedHost) {
-        // todo note HttpClientBuilder
+    public static HttpResponseInfo RequestWithMesberaHttpClient(String url, String reservedDNS, String preresolvedHost) {
         HttpClientBuilder builder = HttpClientBuilder.create();
         HttpClientConnectionManager connManager = null;
         if (!TextUtils.isEmpty(reservedDNS)) {
@@ -64,7 +63,6 @@ public class NetworkUtil {
             Log.i(tag, "Http 请求:" + url);
             HttpGet httpGet = new HttpGet(url);
 
-
             startTime = System.currentTimeMillis();
             response = httpClient.execute(httpGet);
 
@@ -88,13 +86,6 @@ public class NetworkUtil {
                 }
                 String bodyStr = EntityUtils.toString(entity, encoding);
                 Log.i(tag, "Content: "+bodyStr);
-
-                // todo note  content may be empty with this approach
-//				ByteArrayOutputStream out = new ByteArrayOutputStream();
-//				response.getEntity().writeTo(out);
-//				responseString = out.toString();
-//				out.close();
-
                 responseInfo.Content = bodyStr;
                 responseInfo.Status = EHttpResponseStatus.Succeed;
             } else {
@@ -131,7 +122,6 @@ public class NetworkUtil {
         }
         return responseInfo;
     }
-
 
     public static HttpResponseInfo RequestWithHttpConnection(String url) {
 //        // ===================================

@@ -2,23 +2,13 @@ package com.lolofinil.AndroidPG.Common.BaseLib.util;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
-import android.net.Network;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
-import android.text.TextUtils;
 import android.util.Log;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
-import cz.msebera.android.httpclient.HttpResponse;
-import cz.msebera.android.httpclient.client.HttpClient;
-import cz.msebera.android.httpclient.conn.HttpClientConnectionManager;
-import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
-import cz.msebera.android.httpclient.impl.client.HttpClientBuilder;
 
 // todo support network availability check
 
@@ -59,13 +49,11 @@ public class HttpRequestAgent extends AsyncTask<String, String, HttpResponseInfo
     private ArrayList<TrialOnceData> trialOnceDataList;
 
     private void buildTrailList() {
-        trialOnceDataList = new ArrayList<TrialOnceData>();
-        // direct & retry
+        trialOnceDataList = new ArrayList<>();
         for(int i=0; i<RetryCount+1; i++) {
             TrialOnceData data = new TrialOnceData();
             trialOnceDataList.add(data);
         }
-        // use dns
         if (reservedDNSList != null) {
             for(int i=0; i<reservedDNSList.size(); i++) {
                 TrialOnceData data = new TrialOnceData();
@@ -73,7 +61,6 @@ public class HttpRequestAgent extends AsyncTask<String, String, HttpResponseInfo
                 trialOnceDataList.add(data);
             }
         }
-        // use preresolved host X
         if (preresolvedBanlaceHostList != null) {
             for (int i = 0; i < preresolvedBanlaceHostList.size(); i++) {
                 TrialOnceData data = new TrialOnceData();
@@ -90,6 +77,7 @@ public class HttpRequestAgent extends AsyncTask<String, String, HttpResponseInfo
         ConnectivityManager connMgr = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         if (networkInfo == null || !networkInfo.isConnected()) {
+            // no request & no retry when network unavailable
             HttpResponseInfo httpResponseInfo = new HttpResponseInfo();
             httpResponseInfo.Status = EHttpResponseStatus.NetworkUnavailable;
             return httpResponseInfo;
@@ -113,7 +101,7 @@ public class HttpRequestAgent extends AsyncTask<String, String, HttpResponseInfo
     }
 
     private HttpResponseInfo requestOnce(String reservedDNS, String preresolvedHost, EStringFormat expectedResponseBodyFormat) {
-        HttpResponseInfo responseInfo = NetworkUtil.RequestWithApacheHttpClient(url, reservedDNS, preresolvedHost);
+        HttpResponseInfo responseInfo = NetworkUtil.RequestWithMesberaHttpClient(url, reservedDNS, preresolvedHost);
         if (responseInfo.Status == EHttpResponseStatus.Succeed && !ValidUtil.ValidStringFormat(responseInfo.Content, expectedResponseBodyFormat))
             responseInfo.Status = EHttpResponseStatus.UnexpectedResponseBodyFormat;
         return responseInfo;
@@ -123,10 +111,5 @@ public class HttpRequestAgent extends AsyncTask<String, String, HttpResponseInfo
     protected void onPostExecute(HttpResponseInfo httpResponseInfo) {
         super.onPostExecute(httpResponseInfo);
         handler.Callback(httpResponseInfo);
-    }
-
-    private boolean isRetryMakeSense(HttpResponseInfo httpResponseInfo) {
-        // todo 没有联网就不要重试了
-        return false;
     }
 }

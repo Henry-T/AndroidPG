@@ -88,6 +88,7 @@ public class MainActivity extends Activity {
                 HttpRequestAgent httpRequestAgent = new HttpRequestAgent(MainActivity.this, dnsList, null, EStringFormat.JSON, new IHttpRequestHandler() {
                     @Override
                     public void Callback(HttpResponseInfo httpResponseInfo) {
+                        Log.i(tag, "http request failed once");
                         Log.i(tag, httpResponseInfo.Content);
                     }
                 }, new IHttpRequestHandler() {
