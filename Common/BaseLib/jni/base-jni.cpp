@@ -23,8 +23,8 @@
 #include <jni.h>
 #include <netdb.h>
 #include <set>
-#include "ares.h"
-#include "ares_dns.h"
+#include <ares.h>
+#include <ares_dns.h>
 using namespace std;
 
 #define  LOG_TAG    "base-jni.cpp"

@@ -167,10 +167,8 @@ E:/PlayGround/AndroidPG/common/BaseLib//obj/local/armeabi-v7a/objs/base-jni/base
  D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_set.h \
  D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_tree.h \
  D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_tree.c \
- E:/PlayGround/AndroidPG/common/BaseLib//jni/ares.h \
- E:/PlayGround/AndroidPG/common/BaseLib//jni/ares_version.h \
- E:/PlayGround/AndroidPG/common/BaseLib//jni/ares_build.h \
- E:/PlayGround/AndroidPG/common/BaseLib//jni/ares_rules.h \
+ libcares/include/ares.h libcares/include/ares_version.h \
+ libcares/include/ares_build.h libcares/include/ares_rules.h \
  D:/Development/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/sys/select.h \
  D:/Development/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/netinet/in.h \
  D:/Development/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/endian.h \
@@ -184,7 +182,7 @@ E:/PlayGround/AndroidPG/common/BaseLib//obj/local/armeabi-v7a/objs/base-jni/base
  D:/Development/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/linux/in6.h \
  D:/Development/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/linux/ipv6.h \
  D:/Development/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/netinet/in6.h \
- E:/PlayGround/AndroidPG/common/BaseLib//jni/ares_dns.h
+ libcares/include/ares_dns.h
 
 D:/Development/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/android/log.h:
 
@@ -520,13 +518,13 @@ D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_tree.h:
 
 D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_tree.c:
 
-E:/PlayGround/AndroidPG/common/BaseLib//jni/ares.h:
+libcares/include/ares.h:
 
-E:/PlayGround/AndroidPG/common/BaseLib//jni/ares_version.h:
+libcares/include/ares_version.h:
 
-E:/PlayGround/AndroidPG/common/BaseLib//jni/ares_build.h:
+libcares/include/ares_build.h:
 
-E:/PlayGround/AndroidPG/common/BaseLib//jni/ares_rules.h:
+libcares/include/ares_rules.h:
 
 D:/Development/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/sys/select.h:
 
@@ -554,4 +552,4 @@ D:/Development/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/linux/ip
 
 D:/Development/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/netinet/in6.h:
 
-E:/PlayGround/AndroidPG/common/BaseLib//jni/ares_dns.h:
+libcares/include/ares_dns.h:
