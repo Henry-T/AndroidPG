@@ -160,7 +160,7 @@ void ResolvedCallback(void *data, int status, int timeouts, struct hostent *host
     g_jEnv->ExceptionDescribe();
   }
 
-  g_jvm->DetachCurrentThread();
+  // g_jvm->DetachCurrentThread();
 }
 
 /* This is a trivial JNI example where we use a native method

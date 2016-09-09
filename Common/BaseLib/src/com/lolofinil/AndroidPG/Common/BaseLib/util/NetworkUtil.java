@@ -120,7 +120,8 @@ public class NetworkUtil {
             responseInfo.InternalErrorMsg = "ClientProtocolException";
         } catch (UnknownHostException e) {
             responseInfo.Status = EHttpResponseStatus.UnknownHost;
-            responseInfo.InternalErrorMsg = "UnknownHostException";
+            responseInfo.InternalErrorMsg = "UnknownHostException Msg:"+e.getMessage();
+            Log.e(tag, responseInfo.InternalErrorMsg);
         } catch (IOException e) {
             Long endTime = System.currentTimeMillis();
             String msg = "IOException :: time elapsed :: "

@@ -99,8 +99,9 @@ public class HttpRequestAgent extends AsyncTask<String, String, HttpResponseInfo
         HttpResponseInfo lastTrialResponse = null;
         int count = 0;
         while(iter.hasNext()) {
-            Log.i(tag, "trial count:"+ ++count);
             TrialOnceData trialOnceData = (TrialOnceData)iter.next();
+            String msg = String.format("trial count:%s DNS:%s Host:%s", count, trialOnceData.DNS, trialOnceData.PreresolvedHost);
+            Log.i(tag, msg);
             lastTrialResponse = requestOnce(trialOnceData.DNS, trialOnceData.PreresolvedHost, expectedResponseBodyFormat);
             if (lastTrialResponse.Status == EHttpResponseStatus.Succeed) {
                 break;
