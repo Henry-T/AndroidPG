@@ -1,7 +1,7 @@
 E:/PlayGround/AndroidPG/common/BaseLib//obj/local/armeabi-v7a/objs/base-jni/base-jni.o: \
  E:/PlayGround/AndroidPG/common/BaseLib//jni/base-jni.cpp \
- D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/iostream \
- D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_prolog.h \
+ D:/Development/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/android/log.h \
+ D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stdarg.h \
  D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_cprolog.h \
  D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/config/features.h \
  D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_stlport_version.h \
@@ -16,6 +16,10 @@ E:/PlayGround/AndroidPG/common/BaseLib//obj/local/armeabi-v7a/objs/base-jni/base
  D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/config/_gcc.h \
  D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/config/stl_confix.h \
  D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/config/_native_headers.h \
+ D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_epilog.h \
+ D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_config_compat_post.h \
+ D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/iostream \
+ D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_prolog.h \
  D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/debug/_debug.h \
  D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_ioserr.h \
  D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_iosfwd.h \
@@ -50,7 +54,6 @@ E:/PlayGround/AndroidPG/common/BaseLib//obj/local/armeabi-v7a/objs/base-jni/base
  D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_cstdio.h \
  D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stdio.h \
  D:/Development/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/../include/stdio.h \
- D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stdarg.h \
  D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_iterator_base.h \
  D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_ptrs_specialize.h \
  D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/type_traits.h \
@@ -139,8 +142,6 @@ E:/PlayGround/AndroidPG/common/BaseLib//obj/local/armeabi-v7a/objs/base-jni/base
  D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_istream.c \
  D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_num_get.h \
  D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_num_get.c \
- D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_epilog.h \
- D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_config_compat_post.h \
  D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/string \
  D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_string_hash.h \
  D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_hash_fun.h \
@@ -162,6 +163,10 @@ E:/PlayGround/AndroidPG/common/BaseLib//obj/local/armeabi-v7a/objs/base-jni/base
  D:/Development/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/asm/sockios.h \
  D:/Development/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/linux/sockios.h \
  D:/Development/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/linux/uio.h \
+ D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/set \
+ D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_set.h \
+ D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_tree.h \
+ D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_tree.c \
  E:/PlayGround/AndroidPG/common/BaseLib//jni/ares.h \
  E:/PlayGround/AndroidPG/common/BaseLib//jni/ares_version.h \
  E:/PlayGround/AndroidPG/common/BaseLib//jni/ares_build.h \
@@ -181,9 +186,9 @@ E:/PlayGround/AndroidPG/common/BaseLib//obj/local/armeabi-v7a/objs/base-jni/base
  D:/Development/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/netinet/in6.h \
  E:/PlayGround/AndroidPG/common/BaseLib//jni/ares_dns.h
 
-D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/iostream:
+D:/Development/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/android/log.h:
 
-D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_prolog.h:
+D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stdarg.h:
 
 D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_cprolog.h:
 
@@ -212,6 +217,14 @@ D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/config/_gcc.h
 D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/config/stl_confix.h:
 
 D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/config/_native_headers.h:
+
+D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_epilog.h:
+
+D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_config_compat_post.h:
+
+D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/iostream:
+
+D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_prolog.h:
 
 D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/debug/_debug.h:
 
@@ -280,8 +293,6 @@ D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_cstdio.h:
 D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stdio.h:
 
 D:/Development/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/../include/stdio.h:
-
-D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stdarg.h:
 
 D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_iterator_base.h:
 
@@ -459,10 +470,6 @@ D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_num_get.h:
 
 D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_num_get.c:
 
-D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_epilog.h:
-
-D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_config_compat_post.h:
-
 D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/string:
 
 D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_string_hash.h:
@@ -504,6 +511,14 @@ D:/Development/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/asm/sock
 D:/Development/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/linux/sockios.h:
 
 D:/Development/android-ndk-r9d/platforms/android-3/arch-arm/usr/include/linux/uio.h:
+
+D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/set:
+
+D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_set.h:
+
+D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_tree.h:
+
+D:/Development/android-ndk-r9d/sources/cxx-stl/stlport/stlport/stl/_tree.c:
 
 E:/PlayGround/AndroidPG/common/BaseLib//jni/ares.h:
 

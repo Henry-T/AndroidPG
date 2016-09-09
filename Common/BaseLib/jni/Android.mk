@@ -22,7 +22,7 @@ include $(PREBUILT_STATIC_LIBRARY)
 include $(CLEAR_VARS)
 LOCAL_MODULE    := base-jni
 LOCAL_SRC_FILES := base-jni.cpp
-
 LOCAL_STATIC_LIBRARIES := libcares
+LOCAL_LDLIBS := -llog
 
 include $(BUILD_SHARED_LIBRARY)

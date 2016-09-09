@@ -21,13 +21,12 @@ public class CaresDnsResolver implements DnsResolver {
 
     @Override
     public InetAddress[] resolve(String s) throws UnknownHostException {
-//        boolean ok = caresResolve(dns, s);
-        String ok = caresResolve(dns, s);
-//        String t = stringFromJNI();
+        boolean ok = caresResolve(dns, s);
+        Log.i(tag, "caresResolve call:"+ok);
         return new InetAddress[0];
     }
 
-    public native String caresResolve(String dns, String domain);
+    public native boolean caresResolve(String dns, String domain);
     public void cares_onResolved(String info){
         Log.i(tag, "cares resolve result:"+info);
     }
