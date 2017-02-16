@@ -1,5 +1,6 @@
 package com.lolofinil.relaunch;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Process;
@@ -26,19 +27,26 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public static void Relaunch(Context context) {
+    public static void Relaunch(Activity context) {
         Log.i(tag, "Relaunch called");
 
+        Log.i(tag, "Activity.finish before call");
+        context.finish();
+        Log.i(tag, "Activity.finish called");
 
-
+        Log.i(tag, "Intent before register");
         Intent i = context.getPackageManager().getLaunchIntentForPackage(context.getPackageName());
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         context.startActivity(i);
         Log.i(tag, "Intent registered");
 
-
-        // System.exit(0);
+        Log.i(tag, "killProcess before call");
         int pid = android.os.Process.myPid();
         android.os.Process.killProcess(pid);
+        Log.i(tag, "killProcess called");
+
+        Log.i(tag, "System.exit before call");
+        System.exit(0);
+        Log.i(tag, "System.exit called");
     }
 }
