@@ -40,6 +40,11 @@ public class MainActivity extends AppCompatActivity {
         context.startActivity(i);
         Log.i(tag, "Intent registered");
 
+
+        int x =0;
+        int y = 1/x;
+
+
         Log.i(tag, "killProcess before call");
         int pid = android.os.Process.myPid();
         android.os.Process.killProcess(pid);
